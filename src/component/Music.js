@@ -48,6 +48,8 @@ export default class Music extends React.PureComponent {
     const music = this.bgMusic.current;
 
     music.play();
+  };
+  onPlaying = () => {
     this.setState({
       playing: true
     });
@@ -75,6 +77,7 @@ export default class Music extends React.PureComponent {
         />
         <audio
           onCanPlay={this.onCanPlay}
+          onPlaying={this.onPlaying}
           autoPlay={true}
           loop={true}
           ref={this.bgMusic}

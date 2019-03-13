@@ -126,16 +126,16 @@ export default class Where extends Component {
         opacity: [0, 1]
       })
       .add({
-        targets: qb,
+        targets: qs,
         opacity: [0.1, 1],
-        translateY: [-180, 0],
+        translateY: [-140, 0],
         easing: "linear",
         duration: 1000
       })
       .add({
-        targets: qs,
+        targets: qb,
         opacity: [0.1, 1],
-        translateY: [-140, 0],
+        translateY: [-180, 0],
         easing: "linear",
         duration: 1000
       });

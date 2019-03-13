@@ -48,8 +48,16 @@ const types = {
   },
   snow: {
     particles: {
+      opacity: {
+        anim: {
+          enable: true,
+          speed: 2,
+          opacity_min: 0.05
+        },
+        opacity_max: 0.1
+      },
       number: {
-        value: 120,
+        value: 40,
         density: {
           enable: false
         }
