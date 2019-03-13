@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { rem } from "polished";
 import anime from "animejs";
 
 const Content = styled.div`
