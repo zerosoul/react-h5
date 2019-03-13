@@ -168,15 +168,18 @@ export default class Zhaosheng extends React.PureComponent {
           return 45 * (i + 1);
         }
       })
-      .add({
-        targets: secondLetters,
-        scale: [0, 1],
-        duration: 1500,
-        elasticity: 600,
-        delay: function(el, i) {
-          return 45 * (i + 1);
-        }
-      })
+      .add(
+        {
+          targets: secondLetters,
+          scale: [0, 1],
+          duration: 1000,
+          elasticity: 600,
+          delay: function(el, i) {
+            return 45 * (i + 1);
+          }
+        },
+        "-=500"
+      )
       .add({
         targets: thirdLetters,
         scale: [0, 1],
@@ -186,21 +189,24 @@ export default class Zhaosheng extends React.PureComponent {
           return 80 * (i + 1);
         }
       })
-      .add({
-        targets: fourthLetters,
-        scale: [0, 1],
-        duration: 1500,
-        elasticity: 900,
-        delay: function(el, i) {
-          return 45 * (i + 1);
-        }
-      })
+      .add(
+        {
+          targets: fourthLetters,
+          scale: [0, 1],
+          duration: 1000,
+          elasticity: 900,
+          delay: function(el, i) {
+            return 45 * (i + 1);
+          }
+        },
+        "-=1500"
+      )
       .add({
         targets: zsLetter,
-        scale: [5, 1],
+        scale: [8, 1],
         opacity: [0, 1],
-        duration: 2000,
-        elasticity: 600,
+        duration: 1000,
+        elasticity: 200,
         complete: () => {
           wordBox.remove();
         }

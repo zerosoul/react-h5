@@ -54,6 +54,11 @@ export default class Music extends React.PureComponent {
       playing: true
     });
   };
+  onPause = () => {
+    this.setState({
+      playing: false
+    });
+  };
   onTogglePlay = () => {
     const { playing } = this.state;
     const bgM = this.bgMusic.current;
@@ -62,9 +67,6 @@ export default class Music extends React.PureComponent {
     } else {
       bgM.play();
     }
-    this.setState({
-      playing: !playing
-    });
   };
   render() {
     const { playing } = this.state;
@@ -77,6 +79,7 @@ export default class Music extends React.PureComponent {
         />
         <audio
           onCanPlay={this.onCanPlay}
+          onPause={this.onPause}
           onPlaying={this.onPlaying}
           autoPlay={true}
           loop={true}
