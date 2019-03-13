@@ -66,6 +66,9 @@ class App extends Component {
     this.mySwiper = null;
   }
   initSwiper = () => {
+    this.setState({
+      loading: false
+    });
     const mySwiper = new Swiper(".swiper-container", {
       // Optional parameters
       direction: "vertical",
@@ -75,9 +78,7 @@ class App extends Component {
     mySwiper.on("slideChange", wtf => {
       console.log("wtf", mySwiper);
       const { activeIndex } = mySwiper;
-      let { slides } = this.state;
-      let count = slides.length;
-      let newSlides = new Array(count).fill(false);
+      let newSlides = new Array(mySwiper.slides.length).fill(false);
       newSlides[activeIndex] = true;
       this.setState({
         slides: newSlides
@@ -90,29 +91,9 @@ class App extends Component {
       slides: initSlides
     });
   };
-  componentDidMount() {
-    let { progress } = this.state;
-    this.interNum = setInterval(() => {
-      progress++;
-      this.setState({
-        progress
-      });
-      if (progress >= 100) {
-        clearInterval(this.interNum);
-
-        this.setState(
-          {
-            loading: false
-          },
-          () => {
-            this.initSwiper();
-          }
-        );
-      }
-    }, 100);
-  }
+  componentDidMount() {}
   render() {
-    const { loading, progress, mySwiper, slides } = this.state;
+    const { loading, mySwiper, slides } = this.state;
     const [
       first,
       second,
@@ -130,7 +111,7 @@ class App extends Component {
       <>
         <GlobalStyle />
         {loading ? (
-          <Loading progress={progress} />
+          <Loading onInitOver={this.initSwiper} />
         ) : (
           <>
             <Music />

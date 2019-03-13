@@ -6,6 +6,10 @@ const types = {
       number: {
         value: 40
       },
+      line_linked: {
+        enable: true,
+        opacity: 0.5
+      },
       size: {
         value: 3
       }

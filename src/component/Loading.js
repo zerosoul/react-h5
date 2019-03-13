@@ -2,8 +2,16 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import SlideWrapper from "./SliderWrapper";
 import LogoImg from "../assets/img/logo.png";
+import anime from "animejs";
 
 const Content = styled.div`
+  .uil-ripple {
+    position: absolute;
+    left: calc(50% - 90px);
+    top: calc(50% - 170px);
+    opacity: 0.5;
+    z-index: 999;
+  }
   .progress {
     position: absolute;
     font-size: 15px;
@@ -23,13 +31,134 @@ const Content = styled.div`
     width: 117px;
   }
 `;
-export default class Loading extends Component {
+export default class Loading extends React.PureComponent {
+  constructor() {
+    super();
+    this.progress = {
+      percent: "5%",
+      scaleNum: 0.1
+    };
+    this.wrapper = React.createRef();
+  }
+  componentDidMount() {
+    const { onInitOver = () => {} } = this.props;
+    const wrapper = this.wrapper.current;
+    const ripple = wrapper.querySelector(".uil-ripple");
+    const tl = anime.timeline();
+    tl.add({
+      targets: this.progress,
+      loop: false,
+      percent: "100%",
+      scaleNum: 6,
+      round: 1,
+      duration: 4000,
+      update: () => {
+        const { percent, scaleNum } = this.progress;
+        wrapper.querySelector(".progress").innerHTML = percent;
+        // wrapper.querySelector(
+        //   ".uil-ripple"
+        // ).style.transform = `scale(${scaleNum})`;
+      },
+      easing: "easeInOutQuad",
+      complete: anim => {
+        console.log("c");
+      }
+    })
+      .add({
+        targets: ripple,
+        scale: 6,
+        duration: 3000
+      })
+      .add({
+        targets: wrapper,
+        opacity: [1, 0],
+        duration: 1000,
+        complete: anim => {
+          console.log("loading over");
+
+          onInitOver();
+        },
+        easing: "linear"
+      });
+  }
   render() {
-    const { progress = 0 } = this.props;
     return (
       <SlideWrapper>
-        <Content>
-          <p className="progress">{progress}%</p>
+        <Content ref={this.wrapper}>
+          <svg
+            width="182px"
+            height="182px"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="xMidYMid"
+            className="uil-ripple"
+          >
+            <rect
+              x="0"
+              y="0"
+              width="100"
+              height="100"
+              fill="none"
+              className="bk"
+            />
+            <g>
+              <animate
+                attributeName="opacity"
+                dur="4s"
+                repeatCount="indefinite"
+                begin="0s"
+                keyTimes="0;0.33;1"
+                values="1;1;0"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                stroke="#eeeeee"
+                fill="none"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <animate
+                  attributeName="r"
+                  dur="4s"
+                  repeatCount="indefinite"
+                  begin="0s"
+                  keyTimes="0;0.33;1"
+                  values="0;22;44"
+                />
+              </circle>
+            </g>
+            <g>
+              <animate
+                attributeName="opacity"
+                dur="4s"
+                repeatCount="indefinite"
+                begin="2s"
+                keyTimes="0;0.33;1"
+                values="1;1;0"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                stroke="#eeeeee"
+                fill="none"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <animate
+                  attributeName="r"
+                  dur="4s"
+                  repeatCount="indefinite"
+                  begin="2s"
+                  keyTimes="0;0.33;1"
+                  values="0;22;44"
+                />
+              </circle>
+            </g>
+          </svg>
+          <p className="progress">0%</p>
           <img className="logo" src={LogoImg} alt="公司图标" />
         </Content>
       </SlideWrapper>
