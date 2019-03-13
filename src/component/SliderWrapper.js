@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BgImg from "../assets/spider.web.svg";
+// import BgImg from "../assets/spider.web.svg";
 
 const Wrapper = styled.section`
   width: 100vw;

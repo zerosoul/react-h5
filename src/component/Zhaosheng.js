@@ -206,18 +206,22 @@ export default class Zhaosheng extends React.PureComponent {
         scale: [8, 1],
         opacity: [0, 1],
         duration: 1000,
+        endDelay: 1000,
         elasticity: 200,
         complete: () => {
           wordBox.remove();
         }
       })
-      .add({
-        targets: solutionBox,
-        scale: [8, 1],
-        opacity: [0, 1],
-        duration: 1000,
-        elasticity: 600
-      });
+      .add(
+        {
+          targets: solutionBox,
+          scale: [8, 1],
+          opacity: [0, 1],
+          duration: 1000,
+          elasticity: 600
+        },
+        "+=800"
+      );
   }
   render() {
     return (

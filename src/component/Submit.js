@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
-import { rem } from "polished";
 import ani from "animejs";
 
 const Content = styled.div`
@@ -79,7 +78,7 @@ const Content = styled.div`
     margin-bottom: 10px;
   }
 `;
-export default class Submit extends Component {
+export default class Submit extends PureComponent {
   constructor() {
     super();
     this.inputs = React.createRef();

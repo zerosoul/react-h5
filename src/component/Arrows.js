@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
 import ArrowImg from "../assets/img/arrow.png";
 import anime from "animejs";
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
     width: 100%;
   }
 `;
-export default class Arrows extends Component {
+export default class Arrows extends PureComponent {
   constructor() {
     super();
     this.arrows = React.createRef();

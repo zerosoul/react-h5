@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
-import { rem } from "polished";
 import anime from "animejs";
 
 const Wrapper = styled.div`
   z-index: 9999;
   position: fixed;
-  top: 273px;
+  top: 250px;
   right: 2px;
   box-sizing: border-box;
   font-size: 14px;
@@ -18,7 +17,7 @@ const Wrapper = styled.div`
   writing-mode: vertical-lr;
   letter-spacing: 4px;
 `;
-export default class Signup extends Component {
+export default class Signup extends PureComponent {
   constructor() {
     super();
     this.signup = React.createRef();
@@ -37,7 +36,7 @@ export default class Signup extends Component {
     return (
       <Wrapper
         onClick={() => {
-          currSwiper.slideTo(2);
+          currSwiper.slideTo(4);
         }}
         ref={this.signup}
       >

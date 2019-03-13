@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
-import { rem } from "polished";
 import anime from "animejs";
 
 const Wrapper = styled.div`
   z-index: 9999;
   position: fixed;
-  top: 364px;
+  top: 350px;
   right: 2px;
   box-sizing: border-box;
   font-size: 14px;
@@ -17,8 +16,12 @@ const Wrapper = styled.div`
   padding: 6px;
   writing-mode: vertical-lr;
   letter-spacing: 4px;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
 `;
-export default class Tel extends Component {
+export default class Tel extends PureComponent {
   constructor() {
     super();
     this.tel = React.createRef();
@@ -31,6 +34,10 @@ export default class Tel extends Component {
     });
   }
   render() {
-    return <Wrapper ref={this.tel}>电话咨询</Wrapper>;
+    return (
+      <Wrapper ref={this.tel}>
+        <a href="tel:18201385848">电话咨询</a>
+      </Wrapper>
+    );
   }
 }

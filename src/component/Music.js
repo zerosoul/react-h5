@@ -36,7 +36,7 @@ const Wrapper = styled.div`
     }
   }
 `;
-export default class Music extends React.PureComponent {
+export default class Music extends React.Component {
   state = {
     playing: false
   };

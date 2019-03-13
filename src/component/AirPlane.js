@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
 import AirPlane from "../assets/img/airplane.png";
 import anime from "animejs";
@@ -13,7 +13,7 @@ const Wrapper = styled.div`
     width: 100%;
   }
 `;
-export default class Airplane extends Component {
+export default class Airplane extends PureComponent {
   constructor() {
     super();
     this.Airplane = React.createRef();

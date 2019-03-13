@@ -3,12 +3,18 @@ import P from "react-particles-js";
 const types = {
   lines: {
     particles: {
+      opacity: {
+        value: 0.2
+      },
       number: {
         value: 40
       },
+      move: {
+        speed: 1
+      },
       line_linked: {
         enable: true,
-        opacity: 0.5
+        opacity: 0.3
       },
       size: {
         value: 3

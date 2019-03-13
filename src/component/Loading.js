@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
 import SlideWrapper from "./SliderWrapper";
 import LogoImg from "../assets/img/logo.png";
@@ -31,7 +31,7 @@ const Content = styled.div`
     width: 117px;
   }
 `;
-export default class Loading extends React.PureComponent {
+export default class Loading extends PureComponent {
   constructor() {
     super();
     this.progress = {

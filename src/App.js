@@ -192,6 +192,7 @@ class App extends Component {
                   <Slogan />
                   {seventh && (
                     <>
+                      <AirPlane />
                       <Intro />
                       <Particles type="nightSky" />
                     </>

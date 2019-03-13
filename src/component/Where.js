@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
-import { rem } from "polished";
 import anime from "animejs";
 
 const Content = styled.div`
@@ -79,7 +78,7 @@ const Content = styled.div`
     }
   }
 `;
-export default class Where extends Component {
+export default class Where extends PureComponent {
   constructor() {
     super();
     this.wrapper = React.createRef();
@@ -130,14 +129,14 @@ export default class Where extends Component {
         opacity: [0.1, 1],
         translateY: [-140, 0],
         easing: "linear",
-        duration: 1000
+        duration: 600
       })
       .add({
         targets: qb,
         opacity: [0.1, 1],
         translateY: [-180, 0],
         easing: "linear",
-        duration: 1000
+        duration: 800
       });
   }
   render() {

@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
-import { rem } from "polished";
 import anime from "animejs";
 
 const Content = styled.div`
@@ -57,7 +56,7 @@ const Content = styled.div`
     }
   }
 `;
-export default class Open extends Component {
+export default class Open extends PureComponent {
   constructor() {
     super();
     this.wrapper = React.createRef();
@@ -113,16 +112,19 @@ export default class Open extends Component {
         duration: 700,
         delay: 100
       })
-      .add({
-        targets: boxLetters,
-        opacity: [0, 1],
-        easing: "easeOutExpo",
-        duration: 600,
-        offset: "-=775",
-        delay: function(el, i) {
-          return 36 * (i + 1);
-        }
-      })
+      .add(
+        {
+          targets: boxLetters,
+          opacity: [0, 1],
+          easing: "easeOutExpo",
+          duration: 600,
+          offset: "-=775",
+          delay: function(el, i) {
+            return 36 * (i + 1);
+          }
+        },
+        "-=800"
+      )
       .add({
         targets: line,
         opacity: 0,

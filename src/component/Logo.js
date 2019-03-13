@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
 import LogoImg from "../assets/img/logo.png";
-import anime from "animejs";
+// import anime from "animejs";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
     width: 100%;
   }
 `;
-export default class Logo extends Component {
+export default class Logo extends PureComponent {
   constructor() {
     super();
     this.Logo = React.createRef();

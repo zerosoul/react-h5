@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
-import { rem } from "polished";
 import ani from "animejs";
 
 const Content = styled.div`
@@ -52,7 +51,7 @@ const Content = styled.div`
     }
   }
 `;
-export default class Intro extends Component {
+export default class Intro extends PureComponent {
   constructor() {
     super();
     this.wrapper = React.createRef();

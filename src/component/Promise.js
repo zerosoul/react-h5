@@ -45,7 +45,7 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     font-size: 12px;
-    margin-top: 12px;
+    margin-top: 20px;
     .line {
       margin-bottom: 34px;
       font-size: 15px;
