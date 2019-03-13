@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/react-h5/static/media/spider.web.63333ed7.svg"
   },
   {
-    "revision": "066fee813b8853578c0b3d7fe12798fc",
+    "revision": "3e385081ccb21e11da8b9aedfcbd7925",
     "url": "/react-h5/index.html"
   }
 ];
