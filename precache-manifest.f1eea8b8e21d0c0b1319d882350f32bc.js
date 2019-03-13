@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "e51756e2c1af393fc504",
-    "url": "/react-h5/static/js/main.e51756e2.chunk.js"
+    "revision": "d3f67637c83a29deb441",
+    "url": "/react-h5/static/js/main.d3f67637.chunk.js"
   },
   {
     "revision": "696cd9b69c3a7f10aba9",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/react-h5/static/media/spider.web.63333ed7.svg"
   },
   {
-    "revision": "ddab8ae8a3803bc14200eff303c0b94c",
+    "revision": "909867c3a580e9e36271b95aa7331c8c",
     "url": "/react-h5/index.html"
   }
 ];
