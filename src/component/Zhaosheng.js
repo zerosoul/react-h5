@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import anime from "animejs";
 
@@ -112,38 +112,31 @@ export default class Zhaosheng extends React.PureComponent {
     this.wrapper = React.createRef();
   }
   componentDidMount() {
-    this.wrapper.current
-      .querySelectorAll(".point .letters,.words .word")
-      .forEach(node => {
-        console.log("node", node);
+    const wrapper = this.wrapper.current;
+    wrapper.querySelectorAll(".point .letters,.words .word").forEach(node => {
+      console.log("node", node);
 
-        let arr = node.innerText;
-        let newArr = arr.split("").map(t => `<span class='letter'>${t}</span>`);
-        node.innerHTML = newArr.join("");
-      });
-    const wordBox = this.wrapper.current.querySelector(".words");
-    const solutionBox = this.wrapper.current.querySelector(".solution");
-    const titleLetters = this.wrapper.current.querySelectorAll(
-      ".point .letter"
-    );
-    const titleLines = this.wrapper.current.querySelectorAll(".point .line");
-    const firstLetters = this.wrapper.current.querySelectorAll(
-      ".words .word.first .letter"
-    );
-    const secondLetters = this.wrapper.current.querySelectorAll(
+      let arr = node.innerText;
+      let newArr = arr.split("").map(t => `<span class='letter'>${t}</span>`);
+      node.innerHTML = newArr.join("");
+    });
+    const wordBox = wrapper.querySelector(".words");
+    const solutionBox = wrapper.querySelector(".solution");
+    const titleLetters = wrapper.querySelectorAll(".point .letter");
+    const titleLines = wrapper.querySelectorAll(".point .line");
+    const firstLetters = wrapper.querySelectorAll(".words .word.first .letter");
+    const secondLetters = wrapper.querySelectorAll(
       ".words .word.second .letter"
     );
-    const thirdLetters = this.wrapper.current.querySelectorAll(
-      ".words .word.third .letter"
-    );
-    const fourthLetters = this.wrapper.current.querySelectorAll(
+    const thirdLetters = wrapper.querySelectorAll(".words .word.third .letter");
+    const fourthLetters = wrapper.querySelectorAll(
       ".words .word.fourth .letter"
     );
-    const zsLetter = this.wrapper.current.querySelector(".words .word.zs");
+    const zsLetter = wrapper.querySelector(".words .word.zs");
     console.log("thirdLetters", thirdLetters);
 
     anime
-      .timeline({ loop: true })
+      .timeline()
       .add({
         targets: titleLetters,
         scale: [0.3, 1],
@@ -206,13 +199,6 @@ export default class Zhaosheng extends React.PureComponent {
         targets: zsLetter,
         scale: [5, 1],
         opacity: [0, 1],
-        duration: 2000,
-        elasticity: 600
-      })
-      .add({
-        targets: wordBox,
-        scale: [1, 0],
-        opacity: [1, 0],
         duration: 2000,
         elasticity: 600,
         complete: () => {

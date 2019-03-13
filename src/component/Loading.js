@@ -72,7 +72,7 @@ export default class Loading extends React.PureComponent {
       .add({
         targets: wrapper,
         opacity: [1, 0],
-        duration: 1000,
+        duration: 600,
         complete: anim => {
           console.log("loading over");
 

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 import MusicImg from "../assets/img/music.png";
 // import BgMusic from "../assets/bg.mp3";
@@ -29,11 +29,14 @@ const Wrapper = styled.div`
   img {
     width: 23px;
     &.playing {
-      animation: ${rotation} 2s infinite linear;
+      animation: ${rotation} 2s infinite linear forwards;
+    }
+    &.paused {
+      animation-play-state: paused;
     }
   }
 `;
-export default class Music extends Component {
+export default class Music extends React.PureComponent {
   state = {
     playing: false
   };
@@ -41,6 +44,14 @@ export default class Music extends Component {
     super();
     this.bgMusic = React.createRef();
   }
+  onCanPlay = () => {
+    const music = this.bgMusic.current;
+
+    music.play();
+    this.setState({
+      playing: true
+    });
+  };
   onTogglePlay = () => {
     const { playing } = this.state;
     const bgM = this.bgMusic.current;
@@ -60,10 +71,12 @@ export default class Music extends Component {
         <img
           src={MusicImg}
           alt="音乐图片"
-          className={playing ? `playing` : null}
+          className={playing ? `playing` : `playing paused`}
         />
         <audio
+          onCanPlay={this.onCanPlay}
           autoPlay={true}
+          loop={true}
           ref={this.bgMusic}
           src="http://www.170hi.com/kw/other.web.nu01.sycdn.kuwo.cn/resource/n1/34/26/611434910.mp3"
         />
