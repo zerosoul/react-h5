@@ -35,8 +35,7 @@ export default class Loading extends React.PureComponent {
   constructor() {
     super();
     this.progress = {
-      percent: "5%",
-      scaleNum: 0.1
+      percent: "5%"
     };
     this.wrapper = React.createRef();
   }
@@ -47,39 +46,37 @@ export default class Loading extends React.PureComponent {
     const tl = anime.timeline();
     tl.add({
       targets: this.progress,
-      loop: false,
       percent: "100%",
-      scaleNum: 6,
       round: 1,
-      duration: 4000,
+      duration: 3400,
       update: () => {
-        const { percent, scaleNum } = this.progress;
+        const { percent } = this.progress;
         wrapper.querySelector(".progress").innerHTML = percent;
-        // wrapper.querySelector(
-        //   ".uil-ripple"
-        // ).style.transform = `scale(${scaleNum})`;
       },
-      easing: "easeInOutQuad",
-      complete: anim => {
-        console.log("c");
-      }
+      easing: "easeInOutQuad"
     })
-      .add({
-        targets: ripple,
-        scale: 6,
-        duration: 3000
-      })
-      .add({
-        targets: wrapper,
-        opacity: [1, 0],
-        duration: 600,
-        complete: anim => {
-          console.log("loading over");
-
-          onInitOver();
+      .add(
+        {
+          targets: ripple,
+          scale: 5,
+          duration: 4000
         },
-        easing: "linear"
-      });
+        "-=1000"
+      )
+      .add(
+        {
+          targets: wrapper,
+          opacity: [1, 0],
+          duration: 600,
+          complete: anim => {
+            console.log("loading over");
+
+            onInitOver();
+          },
+          easing: "linear"
+        },
+        "-=1500"
+      );
   }
   render() {
     return (

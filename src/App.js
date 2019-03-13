@@ -124,50 +124,78 @@ class App extends Component {
               <div className="swiper-wrapper">
                 {/* <!-- Slides --> */}
                 <SlideWrapper className="swiper-slide">
-                  <Particles type="lines" />
                   <Logo />
                   <Slogan />
-                  {first && <AirPlane />}
-                  {first && <Open />}
+                  {first && (
+                    <>
+                      <Particles type="lines" />
+                      <AirPlane />
+                      <Open />
+                    </>
+                  )}
                 </SlideWrapper>
                 <SlideWrapper className="swiper-slide">
-                  <Particles type="nightSky" />
                   <Logo />
                   <Slogan />
-                  {second && <AirPlane />}
-                  {second && <Where />}
+                  {second && (
+                    <>
+                      <AirPlane />
+                      <Particles type="nightSky" />
+                      <Where />
+                    </>
+                  )}
                 </SlideWrapper>
                 <SlideWrapper className="swiper-slide">
-                  <Particles type="bubble" />
                   <Logo />
                   <Slogan />
-                  {third && <AirPlane />}
-                  {third && <How />}
+                  {third && (
+                    <>
+                      <AirPlane />
+                      <Particles type="bubble" />
+                      <How />
+                    </>
+                  )}
                 </SlideWrapper>
                 <SlideWrapper className="swiper-slide">
-                  <Particles />
                   <Logo />
                   <Slogan />
-                  {fourth && <AirPlane />}
-                  {fourth && <Promise />}
+                  {fourth && (
+                    <>
+                      <AirPlane />
+                      <Particles />
+                      <Promise />
+                    </>
+                  )}
                 </SlideWrapper>
                 <SlideWrapper className="swiper-slide">
-                  <Particles />
                   <Logo />
                   <Slogan />
-                  {fifth && <Submit />}
+                  {fifth && (
+                    <>
+                      <Submit />
+                      <Particles type="lines" />
+                    </>
+                  )}
                 </SlideWrapper>
                 <SlideWrapper className="swiper-slide">
-                  <Particles />
                   <Logo />
                   <Slogan />
-                  {sixth && <Zhaosheng />}
+                  {sixth && (
+                    <>
+                      <Zhaosheng />
+                      <Particles />
+                    </>
+                  )}
                 </SlideWrapper>
                 <SlideWrapper className="swiper-slide">
-                  <Particles />
                   <Logo />
                   <Slogan />
-                  {seventh && <Intro />}
+                  {seventh && (
+                    <>
+                      <Intro />
+                      <Particles type="nightSky" />
+                    </>
+                  )}
                 </SlideWrapper>
               </div>
             </div>
