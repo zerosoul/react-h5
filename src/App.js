@@ -72,7 +72,11 @@ class App extends Component {
     const mySwiper = new Swiper(".swiper-container", {
       // Optional parameters
       direction: "vertical",
-      loop: false
+      loop: false,
+      keyboard: {
+        enabled: true,
+        onlyInViewport: false
+      }
     });
 
     mySwiper.on("slideChange", wtf => {
