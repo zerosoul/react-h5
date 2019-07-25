@@ -51,7 +51,7 @@ const Content = styled.div`
     }
   }
 `;
-export default class Intro extends PureComponent {
+export default class How extends PureComponent {
   constructor() {
     super();
     this.wrapper = React.createRef();
