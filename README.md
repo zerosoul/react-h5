@@ -1,8 +1,10 @@
-该项目使用[Create React App](https://github.com/facebook/create-react-app)创建。
+# 声明
+
+该项目使用[Create React App](https://github.com/facebook/create-react-app)创建，仅为了试验一些新思路，做演示用。
 
 ## 预览地址
 
-[react-h5](https://zerosoul.github.io/react-h5)
+[react-h5](https://demo.yangerxiao.com/react-h5/)
 
 ## 可用脚本
 
@@ -11,7 +13,7 @@
 ### `npm start`
 
 开发模式<br>
-打开 [http://localhost:3000](http://localhost:3000) ，开始愉快地开发吧！
+打开 [http://localhost:3003](http://localhost:3003) ，开始愉快地 Coding 吧！
 
 ### `npm run build`
 
