@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { hot } from "react-hot-loader/root";
 import Swiper from "swiper";
 import GlobalStyle from "./Gloable.style";
 
@@ -25,11 +24,11 @@ class App extends Component {
     loading: true,
     progress: 90,
     mySwiper: null,
-    slides: [false]
+    slides: [false],
   };
   initSwiper = () => {
     this.setState({
-      loading: false
+      loading: false,
     });
     const mySwiper = new Swiper(".swiper-container", {
       // Optional parameters
@@ -37,24 +36,24 @@ class App extends Component {
       loop: false,
       keyboard: {
         enabled: true,
-        onlyInViewport: false
-      }
+        onlyInViewport: false,
+      },
     });
 
-    mySwiper.on("slideChange", wtf => {
+    mySwiper.on("slideChange", (wtf) => {
       console.log("wtf", mySwiper);
       const { activeIndex } = mySwiper;
       let newSlides = new Array(mySwiper.slides.length).fill(false);
       newSlides[activeIndex] = true;
       this.setState({
-        slides: newSlides
+        slides: newSlides,
       });
     });
     const initSlides = new Array(mySwiper.slides.length).fill(false);
     initSlides[0] = true;
     this.setState({
       mySwiper,
-      slides: initSlides
+      slides: initSlides,
     });
   };
   componentDidMount() {}
@@ -152,4 +151,4 @@ class App extends Component {
   }
 }
 
-export default hot(App);
+export default App;

@@ -1,4 +1,5 @@
-import React, { PureComponent } from "react";
+import { useEffect, useRef } from "react";
+
 import styled from "styled-components";
 import ArrowImg from "../assets/img/arrow.png";
 import anime from "animejs";
@@ -16,26 +17,24 @@ const Wrapper = styled.div`
     width: 100%;
   }
 `;
-export default class Arrows extends PureComponent {
-  constructor() {
-    super();
-    this.arrows = React.createRef();
-  }
-  componentDidMount() {
-    anime({
-      targets: this.arrows.current,
-      translateY: -10,
-      duration: 1000,
-      opacity: [0.4, 1],
-      easing: "easeOutExpo",
-      loop: true
-    });
-  }
-  render() {
-    return (
-      <Wrapper ref={this.arrows}>
-        <img src={ArrowImg} alt="导航箭头" />
-      </Wrapper>
-    );
-  }
+
+export default function Arrows() {
+  const wrapper = useRef(null);
+  useEffect(() => {
+    if (wrapper) {
+      anime({
+        targets: wrapper.current,
+        translateY: -10,
+        duration: 1000,
+        opacity: [0.4, 1],
+        easing: "easeOutExpo",
+        loop: true,
+      });
+    }
+  }, []);
+  return (
+    <Wrapper ref={wrapper}>
+      <img src={ArrowImg} alt="导航箭头" />
+    </Wrapper>
+  );
 }

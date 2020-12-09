@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
-import AirPlane from "../assets/img/airplane.png";
+import ImageAirPlane from "../assets/img/airplane.png";
 import anime from "animejs";
 
 const Wrapper = styled.div`
@@ -13,27 +13,25 @@ const Wrapper = styled.div`
     width: 100%;
   }
 `;
-export default class Airplane extends PureComponent {
-  constructor() {
-    super();
-    this.Airplane = React.createRef();
-  }
-  componentDidMount() {
-    anime({
-      targets: this.Airplane.current,
-      translateY: [20, 0],
-      translateX: [-20, 0],
-      rotate: [-90, 0],
-      duration: 2000,
-      opacity: [0, 1],
-      easing: "easeOutExpo"
-    });
-  }
-  render() {
-    return (
-      <Wrapper ref={this.Airplane}>
-        <img src={AirPlane} alt="飞机" />
-      </Wrapper>
-    );
-  }
+
+export default function AirPlane() {
+  const wrapper = useRef(null);
+  useEffect(() => {
+    if (wrapper) {
+      anime({
+        targets: wrapper.current,
+        translateY: [20, 0],
+        translateX: [-20, 0],
+        rotate: [-90, 0],
+        duration: 2000,
+        opacity: [0, 1],
+        easing: "easeOutExpo",
+      });
+    }
+  }, []);
+  return (
+    <Wrapper ref={wrapper}>
+      <img src={ImageAirPlane} alt="飞机" />
+    </Wrapper>
+  );
 }

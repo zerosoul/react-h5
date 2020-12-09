@@ -1,4 +1,4 @@
-import React from "react";
+import { PureComponent, createRef } from "react";
 import styled from "styled-components";
 import FistImg from "../assets/img/fist.png";
 import anime from "animejs";
@@ -52,20 +52,24 @@ const Content = styled.div`
     }
   }
 `;
-export default class Promise extends React.PureComponent {
+export default class Promise extends PureComponent {
   constructor() {
     super();
-    this.wrapper = React.createRef();
+    this.wrapper = createRef();
   }
   componentDidMount() {
     const wrapper = this.wrapper.current;
-    wrapper.querySelectorAll(".decide .line2,.decide .line1").forEach(node => {
-      console.log("node", node);
+    wrapper
+      .querySelectorAll(".decide .line2,.decide .line1")
+      .forEach((node) => {
+        console.log("node", node);
 
-      let arr = node.innerText;
-      let newArr = arr.split("").map(t => `<span class='letter'>${t}</span>`);
-      node.innerHTML = newArr.join("");
-    });
+        let arr = node.innerText;
+        let newArr = arr
+          .split("")
+          .map((t) => `<span class='letter'>${t}</span>`);
+        node.innerHTML = newArr.join("");
+      });
     const fistImg = wrapper.querySelector(".fist");
     const titleLetters = wrapper.querySelectorAll(".decide .letter");
     const words = wrapper.querySelectorAll(".promise .text .word");
@@ -80,9 +84,9 @@ export default class Promise extends React.PureComponent {
         translateZ: 0,
         easing: "easeOutExpo",
         duration: 2000,
-        delay: function(el, i) {
+        delay: function (el, i) {
           return 70 * i;
-        }
+        },
       })
       .add({
         targets: words,
@@ -90,23 +94,23 @@ export default class Promise extends React.PureComponent {
         opacity: [0, 1],
         easing: "easeOutCirc",
         duration: 800,
-        delay: function(el, i) {
+        delay: function (el, i) {
           return 800 * i;
-        }
+        },
       })
       .add({
         targets: fistImg,
-        translateX: [-200, 0]
+        translateX: [-200, 0],
       })
       .add({
         targets: lines,
-        translateX: function(el, i) {
+        translateX: function (el, i) {
           return 50 * i - 80;
         },
         opacity: [0, 1],
         delay: (el, i) => {
           return 300 * i;
-        }
+        },
       });
   }
   render() {

@@ -1,4 +1,5 @@
-import React, { PureComponent } from "react";
+import { useEffect, useRef } from "react";
+
 import styled from "styled-components";
 import anime from "animejs";
 
@@ -56,112 +57,112 @@ const Content = styled.div`
     }
   }
 `;
-export default class Open extends PureComponent {
-  constructor() {
-    super();
-    this.wrapper = React.createRef();
-  }
-  componentDidMount() {
-    this.wrapper.current
-      .querySelectorAll(".title,.sub_title,.new_way .letters")
-      .forEach(node => {
-        console.log("node", node);
 
-        let arr = node.innerText;
-        let newArr = arr.split("").map(t => `<span class='letter'>${t}</span>`);
-        node.innerHTML = newArr.join("");
-      });
-    const titleLetters = this.wrapper.current.querySelectorAll(
-      ".title .letter,.sub_title .letter"
-    );
-    const words = this.wrapper.current.querySelectorAll(".open_now .word");
-    const box = this.wrapper.current.querySelector(".new_way");
-    const letterBox = box.querySelector(".letters");
-    const boxLetters = letterBox.querySelectorAll(".letter");
-    const line = this.wrapper.current.querySelectorAll(".new_way .line");
-    console.log("letters", titleLetters);
+export default function Open() {
+  const wrapper = useRef(null);
+  useEffect(() => {
+    if (wrapper) {
+      wrapper.current
+        .querySelectorAll(".title,.sub_title,.new_way .letters")
+        .forEach((node) => {
+          console.log("node", node);
 
-    anime
-      .timeline({ loop: false })
-      .add({
-        targets: titleLetters,
-        opacity: [0, 1],
-        easing: "easeInOutQuad",
-        duration: 750,
-        delay: function(el, i) {
-          return 150 * (i + 1);
-        }
-      })
-      .add({
-        targets: box,
-        opacity: [0, 0.6],
-        easing: "easeOutExpo",
-        duration: 500
-      })
-      .add({
-        targets: line,
-        scaleY: [0, 1],
-        opacity: [0.5, 1],
-        easing: "easeOutExpo",
-        duration: 500
-      })
-      .add({
-        targets: line,
-        translateX: [0, letterBox.offsetWidth],
-        easing: "easeOutExpo",
-        duration: 700,
-        delay: 100
-      })
-      .add(
-        {
-          targets: boxLetters,
+          let arr = node.innerText;
+          let newArr = arr
+            .split("")
+            .map((t) => `<span class='letter'>${t}</span>`);
+          node.innerHTML = newArr.join("");
+        });
+      const titleLetters = wrapper.current.querySelectorAll(
+        ".title .letter,.sub_title .letter"
+      );
+      const words = wrapper.current.querySelectorAll(".open_now .word");
+      const box = wrapper.current.querySelector(".new_way");
+      const letterBox = box.querySelector(".letters");
+      const boxLetters = letterBox.querySelectorAll(".letter");
+      const line = wrapper.current.querySelectorAll(".new_way .line");
+      console.log("letters", titleLetters);
+
+      anime
+        .timeline({ loop: false })
+        .add({
+          targets: titleLetters,
           opacity: [0, 1],
+          easing: "easeInOutQuad",
+          duration: 750,
+          delay: function (el, i) {
+            return 150 * (i + 1);
+          },
+        })
+        .add({
+          targets: box,
+          opacity: [0, 0.6],
           easing: "easeOutExpo",
-          duration: 600,
-          offset: "-=775",
-          delay: function(el, i) {
-            return 36 * (i + 1);
-          }
-        },
-        "-=800"
-      )
-      .add({
-        targets: line,
-        opacity: 0,
-        duration: 500,
-        easing: "easeOutExpo",
-        delay: 500
-      })
-      .add({
-        targets: words,
-        scale: [14, 1],
-        opacity: [0, 1],
-        easing: "easeOutCirc",
-        duration: 800,
-        delay: function(el, i) {
-          return 800 * i;
-        }
-      });
-  }
-  render() {
-    return (
-      <Content ref={this.wrapper}>
-        <p className="title">互联网助力幼儿园</p>
-        <p className="title">运营管理升级主题论坛</p>
-        <p className="sub_title">一场改变幼教人命运的课程</p>
-        <p className="new_way">
-          <span className="line" />
-          <span className="letters">幼教新十年民办幼儿园的新出路</span>
-        </p>
-        <h1 className="open_now">
-          <span className="word">马上</span>
-          <span className="word">开幕！</span>
-        </h1>
-        <div className="info">
-          <p>3月21日—3月22日</p>
-          <p>郑州市二七区二七广场</p>
-        </div>
-      </Content>
-    );
-  }
+          duration: 500,
+        })
+        .add({
+          targets: line,
+          scaleY: [0, 1],
+          opacity: [0.5, 1],
+          easing: "easeOutExpo",
+          duration: 500,
+        })
+        .add({
+          targets: line,
+          translateX: [0, letterBox.offsetWidth],
+          easing: "easeOutExpo",
+          duration: 700,
+          delay: 100,
+        })
+        .add(
+          {
+            targets: boxLetters,
+            opacity: [0, 1],
+            easing: "easeOutExpo",
+            duration: 600,
+            offset: "-=775",
+            delay: function (el, i) {
+              return 36 * (i + 1);
+            },
+          },
+          "-=800"
+        )
+        .add({
+          targets: line,
+          opacity: 0,
+          duration: 500,
+          easing: "easeOutExpo",
+          delay: 500,
+        })
+        .add({
+          targets: words,
+          scale: [14, 1],
+          opacity: [0, 1],
+          easing: "easeOutCirc",
+          duration: 800,
+          delay: function (el, i) {
+            return 800 * i;
+          },
+        });
+    }
+  }, []);
+  return (
+    <Content ref={wrapper}>
+      <p className="title">互联网助力幼儿园</p>
+      <p className="title">运营管理升级主题论坛</p>
+      <p className="sub_title">一场改变幼教人命运的课程</p>
+      <p className="new_way">
+        <span className="line" />
+        <span className="letters">幼教新十年民办幼儿园的新出路</span>
+      </p>
+      <h1 className="open_now">
+        <span className="word">马上</span>
+        <span className="word">开幕！</span>
+      </h1>
+      <div className="info">
+        <p>3月21日—3月22日</p>
+        <p>郑州市二七区二七广场</p>
+      </div>
+    </Content>
+  );
 }
